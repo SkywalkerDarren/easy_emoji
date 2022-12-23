@@ -8,7 +8,7 @@ Add this into `pubspec.yaml`
 
 ```yaml
 dependencies:
-  easy_emoji: ^1.0.1
+  easy_emoji: ^1.0.2
 ```
 
 ## Usage
