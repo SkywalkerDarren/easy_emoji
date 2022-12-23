@@ -15,7 +15,7 @@ dependencies:
 Easy to use:
 
 ```dart
-import 'package:easy_emoji/emoji.dart';
+import 'package:easy_emoji/easy_emoji.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
