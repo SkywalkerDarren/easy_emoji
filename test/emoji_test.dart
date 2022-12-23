@@ -1,4 +1,4 @@
-import 'package:emoji/emoji.dart';
+import 'package:easy_emoji/emoji.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -7,6 +7,15 @@ void main() {
   test('emoji', () async {
     await emoji.waitInit();
     final testList = [
+      {
+        "input": "!@#😀123",
+        "replace_output": "{!@#}(😀){123}",
+        "replaceEmoji_output": "!@##123",
+        "replaceText_output": "#😀#",
+        "removeEmoji_output": "!@#123",
+        "removeText_output": "😀",
+        "countEmoji_output": 1,
+      },
       {
         "input": "",
         "replace_output": "{}",
