@@ -1,39 +1,63 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+🚀Fast and ✨simple way to handle text with 👍emoji.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Support unicode emoji 15.0
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this into `pubspec.yaml`
+```yaml
+dependencies:
+  easy_emoji: ^1.0.0
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Easy to use:
 
 ```dart
-const like = 'sample';
+import 'package:easy_emoji/emoji.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // wait for emoji data loaded, must call WidgetsFlutterBinding.ensureInitialized() before init.
+  await emoji.waitInit();
+  print(emoji.remove("Hi😀 emoji")); // Hi emoji
+  print("Hi😀 emoji".removeWithEmoji()); // Hi emoji
+  runApp(MyApp());
+}
 ```
 
-## Additional information
+## Example
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Use function:
+
+```dart
+void example() {
+  var str = "Hi😀 emoji";
+  str = emoji.replace(str, emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
+  str = emoji.remove(str, removeEmoji: true);
+  final strList = emoji.split(str, withEmoji: true);
+  final count = emoji.countEmoji(str);
+  
+  emoji.handleAll(str, emojiHandler: (emoji) => print(emoji), textHandler: (text) => print(text));
+}
+```
+
+Use extension:
+
+```dart
+void example() {
+  var str = "Hi😀 emoji";
+  str = str.replaceWithEmoji(emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
+  str = str.replaceWithEmoji(emojiReplacer: (emoji) => "#");
+  str = str.replaceWithEmoji(textReplacer: (text) => "#");
+  str = str.removeWithEmoji();
+  str = str.removeWithEmoji(removeEmoji: false);
+  final strList = str.splitWithEmoji();
+  final count = str.countEmoji();
+}
+```
+
+## License
+
+MIT License
