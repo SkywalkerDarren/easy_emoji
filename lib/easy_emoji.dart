@@ -29,10 +29,12 @@ class Emoji {
 
   Future<_Node> _readFromAssets() async {
     final root = _Node.root();
-    final seqFile = await rootBundle.loadString("packages/easy_emoji/assets/emoji-sequences.txt");
+    final seqFile = await rootBundle
+        .loadString("packages/easy_emoji/assets/emoji-sequences.txt");
     _convertFileToTrie(seqFile, root);
 
-    final zwjFile = await rootBundle.loadString("packages/easy_emoji/assets/emoji-zwj-sequences.txt");
+    final zwjFile = await rootBundle
+        .loadString("packages/easy_emoji/assets/emoji-zwj-sequences.txt");
     _convertFileToTrie(zwjFile, root);
 
     return root;
@@ -89,8 +91,10 @@ class Emoji {
         inEmoji = false;
         if (isEmoji) {
           endEmoji = i;
-          textHandler?.call(String.fromCharCodes(text.sublist(startText, endText)));
-          emojiHandler?.call(String.fromCharCodes(text.sublist(startEmoji, endEmoji)));
+          textHandler
+              ?.call(String.fromCharCodes(text.sublist(startText, endText)));
+          emojiHandler
+              ?.call(String.fromCharCodes(text.sublist(startEmoji, endEmoji)));
           startText = i;
         }
         isEmoji = false;
@@ -116,7 +120,8 @@ class Emoji {
     if (inEmoji && next != null && next.isEnd) {
       textHandler?.call(String.fromCharCodes(text.sublist(startText, endText)));
       endEmoji = text.length;
-      emojiHandler?.call(String.fromCharCodes(text.sublist(startEmoji, endEmoji)));
+      emojiHandler
+          ?.call(String.fromCharCodes(text.sublist(startEmoji, endEmoji)));
       textHandler?.call(String.fromCharCodes(text.sublist(endEmoji)));
     } else {
       textHandler?.call(String.fromCharCodes(text.sublist(startText)));
@@ -124,15 +129,17 @@ class Emoji {
   }
 
   /// Replace all emoji and text in the text with the replacer.
-  String replace(String str, {Replacer? emojiReplacer, Replacer? textReplacer}) {
+  String replace(String str,
+      {Replacer? emojiReplacer, Replacer? textReplacer}) {
     final result = StringBuffer();
     handleAll(
       str,
       emojiHandler: emojiReplacer != null
           ? (emoji) => result.write(emojiReplacer(emoji))
           : (emoji) => result.write(emoji),
-      textHandler:
-          textReplacer != null ? (text) => result.write(textReplacer(text)) : (text) => result.write(text),
+      textHandler: textReplacer != null
+          ? (text) => result.write(textReplacer(text))
+          : (text) => result.write(text),
     );
     return result.toString();
   }
@@ -174,9 +181,10 @@ class Emoji {
 
 extension EmojiExt on String {
   String replaceWithEmoji({Replacer? emojiReplacer, Replacer? textReplacer}) {
-    return emoji.replace(this, emojiReplacer: emojiReplacer, textReplacer: textReplacer);
+    return emoji.replace(this,
+        emojiReplacer: emojiReplacer, textReplacer: textReplacer);
   }
-  
+
   String removeWithEmoji({bool removeEmoji = true}) {
     return emoji.remove(this, removeEmoji: removeEmoji);
   }
@@ -210,5 +218,6 @@ class _Node {
   _Node? getNode(int codePoint) => nodeMap[codePoint];
 
   @override
-  String toString() => "Node{codePoint: $codePoint, isEnd: $isEnd, nodeMap: $nodeMap}";
+  String toString() =>
+      "Node{codePoint: $codePoint, isEnd: $isEnd, nodeMap: $nodeMap}";
 }

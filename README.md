@@ -5,6 +5,7 @@ Support unicode emoji 15.0
 ## Getting started
 
 Add this into `pubspec.yaml`
+
 ```yaml
 dependencies:
   easy_emoji: ^1.0.1
@@ -34,12 +35,29 @@ Use function:
 ```dart
 void example() {
   var str = "Hi😀 emoji";
-  str = emoji.replace(str, emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
-  str = emoji.remove(str, removeEmoji: true);
+  final s1 = emoji.replace(
+      str, emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
+  print(s1); // {Hi}(😀){ emoji}
+  final s2 = emoji.remove(str, removeEmoji: true);
+  print(s2); // Hi emoji
   final strList = emoji.split(str, withEmoji: true);
+  print(strList); // ["Hi", "😀", " emoji"]
   final count = emoji.countEmoji(str);
+  print(count); // 1
   
-  emoji.handleAll(str, emojiHandler: (emoji) => print(emoji), textHandler: (text) => print(text));
+  emoji.handleAll(
+    str, 
+    emojiHandler: (emoji) {
+      // do something with emoji
+      print(emoji);
+    }, textHandler: (text) {
+      // do something with text
+      print(text);
+    },
+  );
+  // Hi
+  // 😀
+  //  emoji
 }
 ```
 
@@ -48,13 +66,21 @@ Use extension:
 ```dart
 void example() {
   var str = "Hi😀 emoji";
-  str = str.replaceWithEmoji(emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
-  str = str.replaceWithEmoji(emojiReplacer: (emoji) => "#");
-  str = str.replaceWithEmoji(textReplacer: (text) => "#");
-  str = str.removeWithEmoji();
-  str = str.removeWithEmoji(removeEmoji: false);
+  final s1 = str.replaceWithEmoji(
+      emojiReplacer: (emoji) => "($emoji)", textReplacer: (text) => "{$text}");
+  print(s1); // {Hi}(😀){ emoji}
+  final s2 = str.replaceWithEmoji(emojiReplacer: (emoji) => "#");
+  print(s2); // Hi# emoji
+  final s3 = str.replaceWithEmoji(textReplacer: (text) => "#");
+  print(s3); // #😀#
+  final s4 = str.removeWithEmoji();
+  print(s4); // Hi emoji
+  final s5 = str.removeWithEmoji(removeEmoji: false);
+  print(s5); // 😀
   final strList = str.splitWithEmoji();
+  print(strList); // ["Hi", "😀", " emoji"]
   final count = str.countEmoji();
+  print(count); // 1
 }
 ```
 
