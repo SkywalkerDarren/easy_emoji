@@ -1,5 +1,5 @@
 name: easy_emoji
-description: "🚀Fast and ✨simple way to handle text with 👍emoji. Support unicode emoji 15.0. Uses the Trie and is written in pure Dart"
+description: "Fast and simple way to handle text with emoji. Support unicode emoji 15.0. Uses the Trie and is written in pure Dart"
 version: 1.0.2
 homepage: https://github.com/SkywalkerDarren/easy_emoji
 
