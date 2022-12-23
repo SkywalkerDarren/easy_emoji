@@ -7,7 +7,7 @@ Support unicode emoji 15.0
 Add this into `pubspec.yaml`
 ```yaml
 dependencies:
-  easy_emoji: ^1.0.0
+  easy_emoji: ^1.0.1
 ```
 
 ## Usage
