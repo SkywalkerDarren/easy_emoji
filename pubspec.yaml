@@ -1,7 +1,7 @@
 name: easy_emoji
 description: Fast and simple way to handle text with emoji.
-version: 0.0.1
-homepage:
+version: 1.0.0
+homepage: https://github.com/SkywalkerDarren/easy_emoji
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
