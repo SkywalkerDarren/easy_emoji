@@ -1,4 +1,4 @@
-import 'package:easy_emoji/emoji.dart';
+import 'package:easy_emoji/easy_emoji.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
