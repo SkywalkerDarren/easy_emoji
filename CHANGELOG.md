@@ -10,3 +10,7 @@
 
 * Update README.md
 * Add example
+
+## 1.0.3
+
+* Fix flutter and dart version

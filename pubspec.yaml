@@ -1,11 +1,11 @@
 name: easy_emoji
 description: "Fast and simple way to handle text with emoji. Support unicode emoji 15.0. Uses the Trie and is written in pure Dart"
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/SkywalkerDarren/easy_emoji
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=2.17.0<3.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
